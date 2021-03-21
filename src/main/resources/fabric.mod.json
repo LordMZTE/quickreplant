@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "quickreplant",
+  "version": "${version}",
+
+  "name": "quickreplant",
+  "description": "A Client side mod to easily replant crops by clicking them with seeds",
+  "authors": [
+    "LordMZTE"
+  ],
+
+  "license": "GPL3",
+  "icon": "assets/quickreplant/icon.png",
+
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "de.mzte.quickreplant.QuickreplantKt::init"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.8.7",
+    "fabric": "*",
+    "fabric-language-kotlin": "*",
+    "minecraft": "1.16.x"
+  },
+  "suggests": {
+    "flamingo": "*"
+  }
+}
