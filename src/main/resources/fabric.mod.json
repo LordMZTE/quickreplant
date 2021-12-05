@@ -19,10 +19,10 @@
     ]
   },
   "depends": {
-    "fabricloader": ">=0.8.7",
-    "fabric": "*",
+    "fabricloader": ">=0.12",
+    "fabric": ">=0.40",
     "fabric-language-kotlin": "*",
-    "minecraft": "1.16.x"
+    "minecraft": "1.18.x"
   },
   "suggests": {
     "flamingo": "*"

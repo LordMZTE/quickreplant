@@ -15,3 +15,8 @@ out/
 
 run/
 minecraft/
+
+.classpath
+.project
+.settings/
+bin/
