@@ -24,11 +24,10 @@ fun onBlockUse(player: PlayerEntity, world: World, hand: Hand, hitResult: BlockH
         return ActionResult.PASS
 
     val handItem = player.getStackInHand(hand).item
-    if (handItem is BlockItem && handItem.block is CropBlock) {
+    if (handItem.isPlantItem()) {
         val clickedPos = hitResult.blockPos
         val state = world.getBlockState(clickedPos)
-        val block = state.block
-        if (block is CropBlock && block.isMature(state)) {
+        if (state.isMaturePlant()) {
             MinecraftClient.getInstance().interactionManager?.let { interactionManager ->
                 interactionManager.attackBlock(clickedPos, Direction.DOWN)
                 // So at this point, you may be asking yourself "how does this replant the crop?" and the truth is,
