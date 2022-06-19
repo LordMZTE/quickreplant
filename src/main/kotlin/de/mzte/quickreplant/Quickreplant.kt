@@ -1,17 +1,14 @@
 package de.mzte.quickreplant
 
 import net.fabricmc.fabric.api.event.player.UseBlockCallback
-import net.minecraft.block.CropBlock
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.network.ClientPlayerEntity
 import net.minecraft.client.world.ClientWorld
 import net.minecraft.entity.player.PlayerEntity
-import net.minecraft.item.BlockItem
 import net.minecraft.util.ActionResult
 import net.minecraft.util.Hand
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.math.Direction
-import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
 
 @Suppress("unused")
@@ -24,8 +21,8 @@ fun onBlockUse(player: PlayerEntity, world: World, hand: Hand, hitResult: BlockH
         return ActionResult.PASS
 
     val handItem = player.getStackInHand(hand).item
-    if (handItem.isPlantItem()) {
-        val clickedPos = hitResult.blockPos
+    val clickedPos = hitResult.blockPos
+    if (handItem.isFittingPlantItem(clickedPos, world)) {
         val state = world.getBlockState(clickedPos)
         if (state.isMaturePlant()) {
             MinecraftClient.getInstance().interactionManager?.let { interactionManager ->
