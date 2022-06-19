@@ -25,9 +25,8 @@ fun Item.isFittingPlantItem(
 ): Boolean {
     if (this is BlockItem) {
         val block = this.block
-        if (!block.canPlaceAt(world.getBlockState(clickedPos.down()), world, clickedPos)) return false
-
-        return block is CropBlock || block is NetherWartBlock
+        if (block !is CropBlock && block !is NetherWartBlock) return false
+        return block.canPlaceAt(world.getBlockState(clickedPos.down()), world, clickedPos)
     }
 
     return false
